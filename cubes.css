@@ -1,0 +1,105 @@
+.cubes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  --cubes-border: rgba(24, 24, 27, 0.45);
+  --cubes-ripple: #737373;
+  --cube-perspective: 99999999px;
+  --cube-face-bg: transparent;
+  --cube-line: 2px;
+  --cube-dash: 9px;
+  --cube-gap: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cubes {
+    --cubes-border: rgba(244, 244, 245, 0.38);
+    --cubes-ripple: #737373;
+    --cube-face-bg: transparent;
+  }
+}
+
+.cubes__scene {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  perspective: var(--cube-perspective);
+  grid-auto-rows: 1fr;
+}
+
+.cubes__cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  transform-style: preserve-3d;
+}
+
+.cubes__cube::before {
+  content: "";
+  position: absolute;
+  top: -36px;
+  right: -36px;
+  bottom: -36px;
+  left: -36px;
+}
+
+.cubes__face {
+  position: absolute;
+  inset: 0;
+  background-color: var(--cube-face-bg);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--cubes-border) 0 var(--cube-dash),
+      transparent var(--cube-dash) calc(var(--cube-dash) + var(--cube-gap))
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--cubes-border) 0 var(--cube-dash),
+      transparent var(--cube-dash) calc(var(--cube-dash) + var(--cube-gap))
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--cubes-border) 0 var(--cube-dash),
+      transparent var(--cube-dash) calc(var(--cube-dash) + var(--cube-gap))
+    ),
+    repeating-linear-gradient(
+      180deg,
+      var(--cubes-border) 0 var(--cube-dash),
+      transparent var(--cube-dash) calc(var(--cube-dash) + var(--cube-gap))
+    );
+  background-size:
+    100% var(--cube-line),
+    var(--cube-line) 100%,
+    100% var(--cube-line),
+    var(--cube-line) 100%;
+  background-position:
+    left top,
+    right top,
+    left bottom,
+    left top;
+  background-repeat: no-repeat;
+  box-shadow: var(--cube-face-shadow, none);
+}
+
+.cubes__face--top {
+  transform: translateY(-50%) rotateX(90deg);
+}
+
+.cubes__face--bottom {
+  transform: translateY(50%) rotateX(-90deg);
+}
+
+.cubes__face--left {
+  transform: translateX(-50%) rotateY(-90deg);
+}
+
+.cubes__face--right {
+  transform: translateX(50%) rotateY(90deg);
+}
+
+.cubes__face--back,
+.cubes__face--front {
+  transform: rotateY(-90deg) translateX(50%) rotateY(90deg);
+}

@@ -29,7 +29,11 @@ const LANG_COLORS = {
 };
 
 const FORK_SVG =
-  '<svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"/></svg>';
+  '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg>';
+const ACCOUNT_ADD_SVG =
+  '<svg class="acc-add-icon" viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path class="aa-body" pathLength="22" d="M3 21v-1c0 -2.21 1.79 -4 4 -4h4c2.21 0 4 1.79 4 4v1"/><path class="aa-head" pathLength="22" d="M9 13c-1.66 0 -3 -1.34 -3 -3c0 -1.66 1.34 -3 3 -3c1.66 0 3 1.34 3 3c0 1.66 -1.34 3 -3 3Z"/><path class="aa-plus-h" pathLength="8" d="M15 6h6"/><path class="aa-plus-v" pathLength="8" d="M18 3v6"/></svg>';
+const CALENDAR_SVG =
+  '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>';
 
 const PREVIEW_OVERRIDES = {};
 
@@ -61,12 +65,22 @@ const I18N = {
     footerNote: "Designed & built with nothing extra.",
     about: "ABOUT",
     nav5: "ABOUT",
-    aboutLead: "Developer who builds software with intent — clean interfaces, honest engineering, and a soft spot for the details nobody asks about.",
-    aboutBio1: "I work across the stack: from pixel-precise frontends to the tooling that keeps them alive. Most of my projects start as a small obsession and end up as something I actually use every day.",
-    aboutBio2: "When I'm not shipping, I'm usually digging into generative graphics, motion, or whatever weird corner of the web caught my attention this week.",
+    aboutCard1Title: "Programming & AI",
+    aboutCard1A: "Building web and desktop projects with Python, Flask, React and Vite — powered by AI.",
+    aboutCard1B: "Exploring practical AI: running local LLMs, integrating neural networks into daily workflows.",
+    aboutCard1C: "Writing scripts to automate third-party interfaces (e.g. automotive diagnostic software).",
+    aboutCard2Title: "Hardware & DIY Engineering",
+    aboutCard2A: "Diagnosing, repairing and configuring computer hardware.",
+    aboutCard2B: "Building PCs for personal use.",
+    aboutCard2C: "DIY projects: designing circuits for ESP32 microcontrollers.",
+    aboutCard2D: "Device jailbreaking — Apple, Nintendo, Android phones and more.",
+    aboutCard3Title: "Games & Administration",
+    aboutCard3A: "Running a personal Minecraft server for playing with friends.",
+    aboutCard3B: "Writing interaction logic via KubeJS, working with command blocks, configuring mod architecture.",
     aboutBased: "Earth, mostly",
-    aboutFocus: "Web · Tooling · Graphics",
-    aboutStack: "JS · TS · Python",
+    aboutStack: "Python · Flask · React · Vite",
+    aboutAI: "Local LLMs · Neural Networks",
+    aboutHardware: "ESP32 · Diagnostics",
     aboutStatus: "Open to work",
     statusIdle: "Available for work",
     statusDone: "Email copied",
@@ -95,15 +109,25 @@ const I18N = {
     nav3: "ПРОЕКТЫ",
     nav4: "КОНТАКТЫ",
     rights: "Все права защищены.",
-    footerNote: "Спроектировано и собрано вручную.",
+    footerNote: "Спроектировано и создано без лишнего.",
     about: "ОБО МНЕ",
     nav5: "ОБО МНЕ",
-    aboutLead: "Разработчик, который создаёт софт с умыслом — чистые интерфейсы, честный код и любовь к деталям, о которых никто не просит.",
-    aboutBio1: "Работаю по всему стеку: от пиксельно-точных фронтендов до инструментов, которые держат их в живых. Большинство проектов начинаются с маленькой идеи-фикс и заканчиваются чем-то, чем я пользуюсь каждый день.",
-    aboutBio2: "Когда не пишу код, обычно копаюсь в генеративной графике, анимации или в очередном странном уголке веба, который приглянулся на этой неделе.",
+    aboutCard1Title: "Программирование и ИИ",
+    aboutCard1A: "Разрабатываю веб- и десктопные проекты, используя Python, Flask, React и Vite с помощью ИИ.",
+    aboutCard1B: "Изучаю практическое применение ИИ, запуск локальных языковых моделей и интеграцию нейросетей в повседневную рутину.",
+    aboutCard1C: "Пишу скрипты для автоматизации работы сторонних интерфейсов (например, для взаимодействия с автомобильным диагностическим ПО).",
+    aboutCard2Title: "Аппаратное обеспечение и DIY-инженерия",
+    aboutCard2A: "Занимаюсь диагностикой, ремонтом и настройкой железа.",
+    aboutCard2B: "Собираю ПК для личного пользования.",
+    aboutCard2C: "Увлекаюсь DIY-проектами: создания схем для микроконтроллеров ESP32.",
+    aboutCard2D: "Джейлбрейк устройств — Apple, Nintendo, Android-смартфоны и не только.",
+    aboutCard3Title: "Игры и администрирование",
+    aboutCard3A: "Держу и настраиваю собственный сервер Minecraft для игр с друзьями.",
+    aboutCard3B: "Прописываю логику взаимодействия через KubeJS, работаю с командными блоками и настраиваю архитектуру модов.",
     aboutBased: "Земля, в основном",
-    aboutFocus: "Веб · Инструменты · Графика",
-    aboutStack: "JS · TS · Python",
+    aboutStack: "Python · Flask · React · Vite",
+    aboutAI: "Локальные LLM · Нейросети",
+    aboutHardware: "ESP32 · Диагностика",
     aboutStatus: "Открыт к предложениям",
     statusIdle: "Открыт к предложениям",
     statusDone: "Почта скопирована",
@@ -272,7 +296,7 @@ function renderStats(user, repos) {
 
   const followCard = el("div", "stat-card stat-mini");
   const followIcon = el("div", "stat-icon mono");
-  followIcon.textContent = "@";
+  followIcon.innerHTML = ACCOUNT_ADD_SVG;
   followCard.append(followIcon);
   followCard.append(makeMini(t("followLbl"), user.followers || 0));
 
@@ -281,10 +305,9 @@ function renderStats(user, repos) {
   let memberCard = null;
   if (user.created_at) {
     memberCard = el("div", "stat-card stat-mini stat-member");
-    const mIcon = el("div", "stat-icon mono");
-    mIcon.innerHTML =
-      '<svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M4.75 0a.75.75 0 0 1 .75.75V2h5V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 0 1 4.75 0ZM2.5 7.55v6.7c0 .14.11.25.25.25h10.5c.14 0 .25-.11.25-.25v-6.7Z"/></svg>';
-    memberCard.append(mIcon);
+  const mIcon = el("div", "stat-icon mono");
+  mIcon.innerHTML = CALENDAR_SVG;
+  memberCard.append(mIcon);
 
     const d = new Date(user.created_at);
     const mm = String(d.getMonth() + 1).padStart(2, "0");
@@ -531,6 +554,116 @@ if (statusBtn) {
     }, 900);
   });
 }
+
+// Dot matrix circular sweep for status button
+(function initStatusDotMatrix() {
+  const canvas = document.querySelector(".sb-dot");
+  if (!canvas || canvas.tagName !== "CANVAS") return;
+
+  const grid = 5;
+  const cell = 18 / grid;
+  const dotR = cell * 0.35;
+  const cx = grid / 2;
+  const cy = grid / 2;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = 18 * dpr;
+  canvas.height = 18 * dpr;
+  canvas.style.width = "18px";
+  canvas.style.height = "18px";
+
+  const ctx = canvas.getContext("2d");
+
+  const BASE = 0.14;
+  const SWEEP = 1.0;
+  const NEAR = 0.52;
+  const RING = 0.35;
+  const IDLE_DELAY = 0;
+
+  let phase = 0;
+  let raf;
+  let lastTime = 0;
+  let lastActivity = Date.now();
+  let sweeping = false;
+
+  function getAccent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#d71921";
+  }
+
+  function onActivity() {
+    lastActivity = Date.now();
+    sweeping = false;
+    phase = 0;
+  }
+
+  document.addEventListener("mousemove", onActivity);
+  document.addEventListener("keydown", onActivity);
+  document.addEventListener("touchstart", onActivity);
+
+  function draw(ts) {
+    const btn = canvas.closest(".status-btn");
+    if (!btn || btn.dataset.status !== "idle") {
+      raf = requestAnimationFrame(draw);
+      return;
+    }
+
+    const dt = lastTime ? (ts - lastTime) / 1000 : 0;
+    lastTime = ts;
+
+    if (!sweeping && Date.now() - lastActivity >= IDLE_DELAY) {
+      sweeping = true;
+    }
+
+    if (sweeping) {
+      phase = (phase + dt * 0.55) % 1;
+    } else {
+      phase = 0;
+    }
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, 18, 18);
+
+    const accent = getAccent();
+    const theta = phase * Math.PI * 2;
+    const sweepX = Math.cos(theta);
+    const sweepY = Math.sin(theta);
+
+    for (let r = 0; r < grid; r++) {
+      for (let c = 0; c < grid; c++) {
+        const dx = c - cx;
+        const dy = r - cy;
+        const radius = Math.hypot(dx, dy);
+        if (radius > 2.0) continue;
+
+        const projection = dx * sweepX + dy * sweepY;
+        const perpendicular = Math.abs(dx * sweepY - dy * sweepX);
+
+        let opacity;
+        if (radius < 0.5) {
+          opacity = 0.78;
+        } else if (projection > 0.3 && perpendicular < 0.55) {
+          opacity = SWEEP;
+        } else if (projection > 0 && perpendicular < 1.15) {
+          opacity = NEAR;
+        } else if (radius > 1.6 && radius < 2.0) {
+          opacity = RING;
+        } else {
+          opacity = BASE;
+        }
+
+        ctx.globalAlpha = opacity;
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.arc(c * cell + cell / 2, r * cell + cell / 2, dotR, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    ctx.globalAlpha = 1;
+    raf = requestAnimationFrame(draw);
+  }
+
+  raf = requestAnimationFrame(draw);
+})();
 
 const glowStates = new WeakMap();
 let glowX = -1e4;

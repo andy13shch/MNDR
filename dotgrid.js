@@ -19,6 +19,7 @@
   };
 
   let ready = false;
+  const isAbout = document.getElementById("sec-about") !== null;
   function readThemeColors() {
     const cs = getComputedStyle(document.documentElement);
     cfg.baseColor = cs.getPropertyValue("--dot-base").trim() || cfg.baseColor;
@@ -183,6 +184,14 @@
   let inHeroPrev = false;
   let leftHeroAt = 0;
   const WAVE_DELAY = 1750;
+  let lastActivity = performance.now();
+
+  function onActivity() {
+    lastActivity = performance.now();
+  }
+  window.addEventListener("pointermove", onActivity, { passive: true });
+  window.addEventListener("keydown", onActivity, { passive: true });
+  window.addEventListener("touchstart", onActivity, { passive: true });
 
   function inBounds(x, y) {
     return x >= 0 && y >= 0 && x <= W && y <= H;
@@ -253,16 +262,20 @@
     const tSec = now / 1000;
 
     if (!reduced) {
-      const rect = canvas.getBoundingClientRect();
-      const inHero =
-        pointerClient.x >= rect.left &&
-        pointerClient.x <= rect.right &&
-        pointerClient.y >= rect.top &&
-        pointerClient.y <= rect.bottom;
-      if (!inHero && inHeroPrev) leftHeroAt = now;
-      inHeroPrev = inHero;
-      const target =
-        !inHero && now - leftHeroAt > WAVE_DELAY ? 1 : 0;
+      let target;
+      if (isAbout) {
+        target = performance.now() - lastActivity >= 3000 ? 1 : 0;
+      } else {
+        const rect = canvas.getBoundingClientRect();
+        const inHero =
+          pointerClient.x >= rect.left &&
+          pointerClient.x <= rect.right &&
+          pointerClient.y >= rect.top &&
+          pointerClient.y <= rect.bottom;
+        if (!inHero && inHeroPrev) leftHeroAt = now;
+        inHeroPrev = inHero;
+        target = !inHero && now - leftHeroAt > WAVE_DELAY ? 1 : 0;
+      }
       idleAmt += (target - idleAmt) * 0.03;
       if (idleAmt < 0.001 && target === 0) idleAmt = 0;
     }

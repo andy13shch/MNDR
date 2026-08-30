@@ -203,10 +203,19 @@
   text-decoration: none;
   position: relative;
   padding: 2px 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   transition: color 0.3s ease, opacity 0.3s ease;
   font-family: "JetBrains Mono", ui-monospace, monospace;
   letter-spacing: 0.06em;
+}
+
+.sm-social-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  display: block;
 }
 
 .staggered-menu-panel .sm-socials-list .sm-socials-link {

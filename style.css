@@ -368,7 +368,7 @@ body {
   transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.tile-veil {
+.tile-veil { display:none !important; }
   position: absolute;
   inset: 0;
   width: 100%;

@@ -383,7 +383,6 @@ async function loadAll() {
 
     renderStats(user, visible);
     renderProjects(visible);
-    if (window.DitherArt) DitherArt.apply(projBox);
   } catch {
     statsBox.innerHTML = "";
     projBox.innerHTML = `<p class="error">${t("errFail")}</p>`;
